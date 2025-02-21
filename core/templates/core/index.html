@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+ <header class="px-6 py-20 lg:py:20 bg-purple-500">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="mb-2 text-3xl lg:text-5xl text-white">
+            Welcome to keltech Ecommerce
+          </p>
+          <p class="mb-10 text-white">We sell furnitures for the modern home</p>
+
+          <a href="{% url 'shop' %}" class="inline-blocl px-8 py-4 bg-white rounded-xl text-purple-500 hover:bg-gray-200">Start Shopping</a>
+        </div>
+      </header>
+
+      <div class="max-w-6xl mx-auto py-2 pt-3 px-6 px:px-0">
+      	<div class="product flex item-center flex-wrap">
+      		{% for product in products %}
+      		  {% include 'products/partials/product_list_item.html' %}
+      		{% endfor %}
+
+      		
+      	</div>
+      </div>
+
+
+
+{% endblock content %}
