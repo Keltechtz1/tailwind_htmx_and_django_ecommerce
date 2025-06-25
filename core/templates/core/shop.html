@@ -3,21 +3,30 @@
 {% load humanize %}
 {% block content %}
 
-      <div class="max-w-7xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+      <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
 
-      	<div class="filters w-full lg:w-1/4">
-      		<h3 class="mb-3 text-lg uppercase">Search</h3>
+    
 
-      		<form class="flex" method="get" action=".">
-      				<input type="text" name="query" class="p-4 bg-gray-100 border-0" placeholder="Search...">
-      				<button class="p-4 bg-gray-100 border-0">
+      	<div class="filters hidden md:block bg-white p-4 rounded shadow">
+      		<h3 class="font-bold text-xl mb-4">Search</h3>
+
+      		<form class="flex " method="get" action=".">
+      				<input type="text" name="query" class="p-4 bg-gray-100 rounded shadow border-0 " placeholder="Search...">
+      				<button class="p-4 bg-gray-100 rounded shadow border-0">
       					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   							<path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
 						</svg>
 
       				</button>
       			</form>
-      			<h3 class="mb-3 mt-6 text-lg uppercase">Categories</h3>
+
+                        <h3 class="font-bold text-xl mt-4 mb-4">Filters</h3>
+                        <div class="mb-6">
+                          <h4 class="font-semibold mb-2">Price</h4>
+                          <input type="range" min="10" max="500" class="w-full">
+                        </div>
+
+      			<h3 class="mt-6 font-bold text-xl mb-4">Categories</h3>
       			<ul class="space-y-2">
       				<li>
       					<a href="{% url 'shop' %}" class="{% if not active_category %}text-purple-500 {% else %}text-gray-500 {% endif %} hover:text-purple-800">All Categories</a>
@@ -30,7 +39,10 @@
       			</ul>
       	</div>
 
-      	<div class="product  w-full lg:w-3/4 flex item-center flex-wrap -mt-4">
+      	<div class="product  col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                  
+
       		{% if products %}
       		{% for product in products %}
       			{% include 'products/partials/product_list_item.html' %}

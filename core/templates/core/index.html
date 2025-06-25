@@ -2,26 +2,99 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
- <header class="px-6 py-20 lg:py:20 bg-purple-500">
-        <div class="max-w-3xl mx-auto text-center">
-          <p class="mb-2 text-3xl lg:text-5xl text-white">
-            Welcome to keltech Ecommerce
-          </p>
-          <p class="mb-10 text-white">We sell furnitures for the modern home</p>
 
-          <a href="{% url 'shop' %}" class="inline-blocl px-8 py-4 bg-white rounded-xl text-purple-500 hover:bg-gray-200">Start Shopping</a>
-        </div>
-      </header>
 
-      <div class="max-w-6xl mx-auto py-2 pt-3 px-6 px:px-0">
-      	<div class="product flex item-center flex-wrap">
-      		{% for product in products %}
-      		  {% include 'products/partials/product_list_item.html' %}
-      		{% endfor %}
-
-      		
-      	</div>
+      <!-- Hero Section Slider -->
+  <section class="bg-white">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide"><img src="https://placehold.co/1200x400?text=Big+Sale" class="w-full rounded bg-red" alt="Banner 1"></div>
+        <div class="swiper-slide"><img src="https://placehold.co/1200x400?text=New+Arrivals" class="w-full rounded" alt="Banner 2"></div>
+        <div class="swiper-slide"><img src="https://placehold.co/1200x400?text=Clearance+Deals" class="w-full rounded" alt="Banner 3"></div>
       </div>
+      <!-- Pagination arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- Content Area -->
+  <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+
+    <!-- Sidebar Filters -->
+    <aside class="hidden md:block bg-white p-4 rounded shadow">
+      <h3 class="font-bold text-xl mb-4">Filters</h3>
+      <div class="mb-6">
+        <h4 class="font-semibold mb-2">Price</h4>
+        <input type="range" min="10" max="500" class="w-full">
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Categories</h4>
+        <ul class="space-y-2">
+          <li>
+                <a href="{% url 'shop' %}" class="{% if not active_category %}text-purple-500 {% else %}text-gray-500 {% endif %} hover:text-purple-800">All Categories</a>
+              </li>
+              {% for cat in categories %}
+              <li>
+                <a href="{% url 'shop' %}?category={{ cat.slug}}" class="{% if cat.slug == active_category %}text-purple-500 {% else %}text-gray-500 {% endif %} hover:text-gray-800 ">{{ cat.name }}</a>
+              </li>
+              {% endfor %}
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Products Grid -->
+    <main class="col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      {% for product in products %}
+            {% include 'products/partials/product_list_item.html' %}
+          {% endfor %}
+
+      
+      <!-- Product Card -->
+      <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform relative">
+        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
+        <img src="https://placehold.co/200x200" alt="Product" class="mb-4 mx-auto">
+        <h3 class="text-sm font-semibold mb-1">Cool Headphones</h3>
+        <p class="text-red-500 font-bold mb-1">$49.99 <span class="line-through text-gray-400 text-xs ml-2">$69.99</span></p>
+        <button class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 text-sm mt-2">Add to Cart</button>
+      </div>
+
+      <!-- More products... -->
+      <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform relative">
+        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">New</span>
+        <img src="https://placehold.co/200x200" alt="Product" class="mb-4 mx-auto">
+        <h3 class="text-sm font-semibold mb-1">Running Shoes</h3>
+        <p class="text-red-500 font-bold mb-1">$39.99</p>
+        <button class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 text-sm mt-2">Add to Cart</button>
+      </div>
+
+      <!-- Repeat product cards as needed -->
+
+    </main>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center mt-10">
+    <button class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">Load More</button>
+  </div>
+
+  <!-- SwiperJS init -->
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 3000,
+      }
+    });
+  </script>
+
+     
 
 
 

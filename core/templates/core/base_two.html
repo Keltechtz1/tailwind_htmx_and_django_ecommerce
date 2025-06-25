@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AliExpress Style Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Include SwiperJS for Hero Slider -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+  <!-- Top Navbar -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <div class="text-2xl font-bold text-red-500">MyStore</div>
+      <div class="hidden md:flex space-x-4">
+        <div class="relative group">
+          <button class="text-gray-700 font-semibold">Categories ▼</button>
+          <div class="absolute hidden group-hover:block bg-white shadow-lg p-4 rounded w-40">
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-red-500">Electronics</a></li>
+              <li><a href="#" class="hover:text-red-500">Fashion</a></li>
+              <li><a href="#" class="hover:text-red-500">Home</a></li>
+              <li><a href="#" class="hover:text-red-500">Sports</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="#" class="hover:text-red-500">Deals</a>
+        <a href="#" class="hover:text-red-500">Help</a>
+      </div>
+      <div class="w-1/3">
+        <input type="text" placeholder="Search for products" class="w-full p-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-red-500">
+      </div>
+      <div class="flex gap-4 text-gray-700">
+        <a href="#">Login</a>
+        <a href="#">Cart</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section Slider -->
+  <section class="bg-white">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://via.placeholder.com/1200x400?text=Big+Sale" class="w-full rounded" alt="Banner 1"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/1200x400?text=New+Arrivals" class="w-full rounded" alt="Banner 2"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/1200x400?text=Clearance+Deals" class="w-full rounded" alt="Banner 3"></div>
+      </div>
+      <!-- Pagination arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </section>
+
+  <!-- Content Area -->
+  <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+
+    <!-- Sidebar Filters -->
+    <aside class="hidden md:block bg-white p-4 rounded shadow">
+      <h3 class="font-bold text-xl mb-4">Filters</h3>
+      <div class="mb-6">
+        <h4 class="font-semibold mb-2">Price</h4>
+        <input type="range" min="10" max="500" class="w-full">
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Categories</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-red-500">Phones</a></li>
+          <li><a href="#" class="hover:text-red-500">Shoes</a></li>
+          <li><a href="#" class="hover:text-red-500">Watches</a></li>
+          <li><a href="#" class="hover:text-red-500">Kitchen</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Products Grid -->
+    <main class="col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      
+      <!-- Product Card -->
+      <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform relative">
+        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">-30%</span>
+        <img src="https://via.placeholder.com/200x200" alt="Product" class="mb-4 mx-auto">
+        <h3 class="text-sm font-semibold mb-1">Cool Headphones</h3>
+        <p class="text-red-500 font-bold mb-1">$49.99 <span class="line-through text-gray-400 text-xs ml-2">$69.99</span></p>
+        <button class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 text-sm mt-2">Add to Cart</button>
+      </div>
+
+      <!-- More products... -->
+      <div class="bg-white p-4 rounded shadow hover:shadow-lg hover:scale-105 transition-transform relative">
+        <span class="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded">New</span>
+        <img src="https://via.placeholder.com/200x200" alt="Product" class="mb-4 mx-auto">
+        <h3 class="text-sm font-semibold mb-1">Running Shoes</h3>
+        <p class="text-red-500 font-bold mb-1">$39.99</p>
+        <button class="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600 text-sm mt-2">Add to Cart</button>
+      </div>
+
+      <!-- Repeat product cards as needed -->
+
+    </main>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center mt-10">
+    <button class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">Load More</button>
+  </div>
+
+  <!-- SwiperJS init -->
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 3000,
+      }
+    });
+  </script>
+
+</body>
+</html>

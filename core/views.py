@@ -11,13 +11,15 @@ from .forms import *
 from products.models import *
 from order.models import *
 
-def homeView(request):
-	products = Product.objects.all()[0:8]
+def indexView(request):
+	products = Product.objects.all()[0:6]
+	categories = Category.objects.all()
 
 
 	context = {
 			'page_home' : 'home',
-			'products' : products
+			'products' : products,
+			'categories'  : categories
 	}
 	return  render(request, 'core/index.html', context)
 
